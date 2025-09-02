@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Try-On</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tryon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #540000;
+      color: white;
+      gap: 20px;
+    }
+
+    video {
+      width: 90%;
+      max-width: 600px;
+      border: 3px solid white;
+      border-radius: 10px;
+    }
+
+    .back-btn {
+      background: white;
+      color: #540000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .back-btn:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="tryon-container">
+    <h1>Virtual Try-On</h1>
+    <video id="camera" autoplay playsinline></video>
+    <button class="back-btn" onclick="window.location.href='index.html'">⬅ Back</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('camera');
+
+    // Access the camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => {
+        alert("Camera access denied or unavailable.");
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

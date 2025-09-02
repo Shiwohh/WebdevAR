@@ -136,3 +136,4 @@ function updateFrameDetails(frameId, details) {
     console.log('Updating frame:', frameId, details);
     // Add frame update logic here
 }
+
